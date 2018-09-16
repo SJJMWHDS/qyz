@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>详情</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        text-decoration: none;
+        list-style: none;
+        box-sizing: border-box;
+    }
+    html,body{
+        font-size: 14px;
+        line-height: 1.42857143;
+        background-color: rgb(235, 236, 237);
+    }
+    .top{
+        width: 100%;
+        height: 40px;
+        box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+        background-color: white;
+        border: 1px solid white;
+        overflow: visible;
+        z-index: 10;
+        border-radius: 4px;
+        position: relative;
+        margin-bottom: 80px;
+    }
+    .top .console{
+        width: 1200px;
+        height: 40px;
+        margin: 0 auto;
+    }
+    .top .console .home{
+        display: block;
+        width: 100px;
+        height: 40px;
+        padding: 10px 20px;
+        text-align: center;
+        line-height: 20px;
+        font-size: 20px;
+        font-weight: 200;
+        color: #777;
+        float: left;
+    }
+    .top .console .before{
+        height: 40px;
+        margin: 0 9px;
+        border-right: 1px solid #fff;
+        border-left: 1px solid #f2f2f2;
+        float: left;
+    }
+    .top .console .title{
+        width: 84px;
+        height: 40px;
+        float: left;
+        text-align: center;
+        font-size: 14px;
+        padding: 10px 14px;
+        line-height: 20px;
+        font-weight: bold;
+        text-decoration: none;
+        text-shadow: 0 1px 0 #fff;
+    }
+    .top .console .noth{
+        width: 84px;
+        height: 40px;
+        float: left;
+        text-align: center;
+        font-size: 14px;
+        padding: 10px 14px;
+        line-height: 20px;
+        font-weight: bold;
+        text-decoration: none;
+        text-shadow: 0 1px 0 #fff;
+        background-color: #e5e5e5;
+        box-shadow: inset 0 3px 8px rgba(0,0,0,0.125);
+    }
+    .top .console .right li{
+        width: 56px;
+        height: 40px;
+        padding: 10px 14px;
+        font-size: 14px;
+        float: right;
+    }
+    .top .console .right{
+        width: 112px;
+        height: 40px;
+        color: #777;
+        text-decoration: none;
+        text-shadow: 0 1px 0 #fff;
+        float: right;
+    }
+    .top .console .btn{
+        display: none;
+        float: right;
+    }
+    .container{
+        width: 1170px;
+        margin: 0 auto;
+        overflow: auto;
+    }
+    .df_bgcolor_fff {
+        background-color: #fff;
+    }
+    .df_module {
+        border-top: 1px solid #f6f6f6;
+    }
+    .row-fluid .span12 {
+        width: 100%;
+    }
+    .row-fluid .span8 {
+        width: 65.81196581196582%;
+    }
+    .row-fluid .span7 {
+        width: 57.26495726495726%;
+    }
+    .row-fluid .span6 {
+        width: 48.717948717948715%;
+    }
+    .row-fluid .span4 {
+        width: 31.623931623931625%;
+    }
+    .row-fluid {
+        width: 100%;
+    }
+    .know_box {
+        padding-top: 30px;
+        margin-bottom: 10px;
+    }
+    .know_box .border_r {
+        border-right: 1px solid #e9e9e9;
+    }
+    .text-center {
+        text-align: center;
+    }
+    a {
+        color: #536892;
+        -webkit-transition: all .4s ease-in-out;
+    }
+    .know_box .df_num {
+        color: #000;
+        font-weight: bold;
+        font-family: "Microsoft Yahei","Arial";
+        font-size: 20px;
+        display: block;
+    }
+    .df_chuise1 {
+        color: #9a9a9a;
+        font-size: 85%;
+    }
+    .row-fluid [class*="span"] {
+        display: block;
+        float: left;
+    }
+    .df_userName {
+        padding: 37px 0 15px 0;
+    }
+    .df_userName .name {
+        font-size: 26px;
+        line-height: 1.5em;
+        margin-left: 5.2%;
+        font-style: normal;
+        font-weight: normal;
+    }
+    .fl {
+        float: left;
+    }
+    .container .one{
+        width: 100%;
+        overflow: auto;
+        background-color: white;
+    }
+    .df_Description {
+        padding: 20px;
+    }
+    .df_bgcolor_fff {
+        background-color: #fff;
+    }
+    .df_module {
+        border-top: 1px solid #f6f6f6;
+    }
+    .font_small1_14 {
+        font-size: 14px;
+        color: #bbb;
+    }
+    .fontms_small2_14 {
+        font-size: 14px;
+        color: #555;
+    }
+    .row-fluid [class*="span"] {
+        display: block;
+        float: left;
+        min-height: 30px;
+    }
+    .tb-shop-info {
+        position: relative;
+        top: -1px;
+        left: 1px;
+    }
+    .tb-shop-age {
+        margin-bottom: 14px;
+    }
+    .tb-shop-info-wrap {
+        color: #666;
+        background: #FFF;
+    }
+    .tb-shop-info-hd .tb-shop-name {
+        margin-bottom: 5px;
+        height: 20px;
+        overflow: hidden;
+    }
+    .tb-shop-info-hd dd {
+        min-height: 20px;
+        line-height: 20px;
+        overflow: hidden;
+    }
+    .tb-shop-info-hd .tb-shop-rank {
+        margin-bottom: 5px;
+        overflow: hidden;
+    }
+    dt{
+        line-height: 20px;
+        font-weight: bold;
+    }
+    .tb-shop-info-hd dt {
+        float: left;
+        height: 20px;
+    }
+    .tb-seller-bail-text {
+        border: 1px solid #00ba97;
+        color: #00ba97;
+        height: 16px;
+        line-height: 10px;
+        font-size: 10px;
+        margin-top: 2px;
+        display: inline;
+        padding: 2px 4px;
+        top: -2px;
+        float: left;
+    }
+    .tb-shop-info-hd .tb-shop-ww {
+        height: 22px;
+        margin-bottom: 5px;
+    }
+    ul.jingcai {
+        background: #f6f6f6;
+        font-size: 14px;
+        display: inline-block;
+        border: 0px;
+    }
+    .menu {
+        width: 1170px;
+    }
+    .jingcai li {
+        height: 62px;
+        display: inline;
+        float: left;
+        line-height: 16px;
+        border: 0px;
+        border-right: 1px solid #E5E5E5;
+        margin-top: -1px;
+    }
+    a {
+        color: #536892;
+        -webkit-transition: all .4s ease-in-out;
+    }
+    .jingcai li.active a{
+        border: 0px;
+        text-decoration: none;
+        border-top: 1px solid #f40;
+        border-radius: 0px;
+        color: #f40;
+        cursor: default;
+        background-color: #fff;
+        width: 82px;
+    }
+    .jingcai li.active {
+        background: #FFF;
+        border: 0px;
+        position: relative;
+        margin-top: 0;
+        height: 62px;
+    }
+    .jingcai li a {
+        display: block;
+        height: 62px;
+        border: 0px;
+        color: #3C3C3C;
+        margin-right: 0px;
+        outline: 0;
+        line-height: 44px;
+    }
+    .nav-tabs>li>a {
+        margin-right: 2px;
+        line-height: 1.42857143;
+        border: 1px solid transparent;
+        border-radius: 4px 4px 0 0;
+    }
+    .nav>li>a {
+        position: relative;
+        display: block;
+    }
+    .nav-tabs>li>a {
+        padding-top: 24px;
+        padding-bottom: 8px;
+        line-height: 20px;
+        border: 1px solid transparent;
+        -webkit-border-radius: 4px 4px 0 0;
+        -moz-border-radius: 4px 4px 0 0;
+        border-radius: 4px 4px 0 0;
+    }
+    .nav-tabs>li>a, .nav-pills>li>a {
+        padding-right: 12px;
+        padding-left: 12px;
+        margin-right: 2px;
+        line-height: 14px;
+    }
+    .an_a {
+        float: right;
+        margin-top: 10px;
+        margin-right: 5px;
+    }
+    .df_btn:visited {
+        color: #fff;
+        text-decoration: none;
+    }
+    .df_btn:link {
+        text-decoration: none;
+    }
+    .df_btn {
+        margin-right: 5px;
+        display: inline-block;
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 30px;
+        cursor: pointer;
+        outline: 0;
+    }
+    .df_white {
+        background-color: transparent;
+        color: #0dec6d;
+        border: #0dec6d 1px solid;
+        margin-left: 10px;
+    }
+    .df_btn {
+        margin-right: 5px;
+        display: inline-block;
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 30px;
+        cursor: pointer;
+        outline: 0;
+    }
+    .btn-danger {
+        color: #fff;
+        text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+        background-color: #da4f49;
+        background-image: -moz-linear-gradient(top,#ee5f5b,#bd362f);
+        background-image: -webkit-gradient(linear,0 0,0 100%,from(#ee5f5b),to(#bd362f));
+        background-image: -webkit-linear-gradient(top,#ee5f5b,#bd362f);
+        background-image: -o-linear-gradient(top,#ee5f5b,#bd362f);
+        background-image: linear-gradient(to bottom,#ee5f5b,#bd362f);
+        background-repeat: repeat-x;
+        border-color: #bd362f #bd362f #802420;
+        border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b',endColorstr='#ffbd362f',GradientType=0);
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    }
+    .tab-content {
+        margin-top: -5px;
+        overflow: auto;
+    }
+    .tab-content>.active {
+        display: block;
+        visibility: visible;
+    }
+    .df_Description {
+        padding: 20px;
+    }
+    .line_break {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        line-height: 24px;
+    }
+    .fontms_wryh14 {
+        font-size: 14px;
+        color: #555;
+        line-height: 24px;
+    }
+    .df_module {
+        border-top: 1px solid #f6f6f6;
+    }
+    .y2-0324-div1 {
+        line-height: 76px;
+    }
+    .df_Description {
+        padding: 20px;
+    }
+    .kg-contract-service-list {
+        padding: 0 10px;
+    }
+    .service-title-h6 {
+        color: #333;
+        font-size: 14px;
+    }
+    .yahei {
+        font-family: "Microsoft YaHei", sans-serif;
+    }
+    h6 {
+        display: block;
+        font-size: 0.67em;
+        -webkit-margin-before: 2.33em;
+        -webkit-margin-after: 2.33em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+        font-weight: bold;
+        margin: 2.33em 0;
+    }
+    .fuwubao-intro-fl {
+        margin-top: 40px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid #f1f1f1;
+        overflow: auto;
+    }
+    dl {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+    dl {
+        display: block;
+        -webkit-margin-before: 1em;
+        -webkit-margin-after: 1em;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 0px;
+    }
+    .fuwubao-intro-fl dd.first {
+        margin-left: 0;
+    }
+    .fuwubao-intro-fl dd {
+        float: left;
+        padding: 0;
+        margin: 0;
+        color: #999;
+        margin-left: 30px;
+    }
+    .p_line {
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 50px;
+    }
+    .tab-pane{
+        margin-bottom: 90px;
+    }
+    .footer{
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        padding: 50px 0;
+        background-color: rgb(96, 104, 115);
+    }
+    .footer ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .footer h4{
+        color: #dedede;
+        margin-left: 36px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    .footer dd{
+        display: block;
+        margin-bottom: 10px;
+    }
+    .footer .container a{
+        display: block;
+        color: white;
+        font-size: 14px;
+    }
+    .footer0{
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        padding-top: 15px;
+        padding-bottom: 20px;
+        background-color: #fff;
+    }
+    .footer0 ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .footer0 li a {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.5;
+        margin-right: 20px;
+    }
+    .footer0 .ljbt {
+        color: #999;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    .footer0 .lianjie {
+        margin-bottom: 10px;
+    }
+    .footer0 .lianjie a {
+        color: #999;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    .footer0 .end p{
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        color: #999;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+</style>
+<body>
+    <div class="top">
+    <div class="console">
+        <a href="首页.html" class="home">乐鱼网</a>
+        <ul class="li">
+            <li class="before"></li>
+            <li class="noth"><a href="技术兼职.html" style="text-decoration: none;color: #777">技术兼职</a></li>
+            <li class="before"></li>
+            <li class="title"><a href="招聘需求.html" style="text-decoration: none;color: #777">招聘需求</a></li>
+            <li class="before"></li>
+        </ul>
+        <ul class="right">
+            <li><a href="" style="text-decoration: none;color: #777">注册</a></li>
+            <li><a href="" style="text-decoration: none;color: #777">登录</a></li>
+        </ul>
+        <a href="" class="btn">导航栏</a>
+    </div>
+</div>
+    <div class="container">
+        <div class="one">
+            <div class="row-fluid df_bgcolor_fff df_module" style="padding-top: 6px; padding-bottom: 22px;height: 158.47px">
+                <div class="span12">
+                    <div class="span8">
+                        <div class="span8">
+                            <div class="df_userName clearfix"style="height: 129.47px">
+                                <strong class="name fl">上海和逸金融&nbsp;&nbsp;.Net 后端开发&nbsp;&nbsp;3年工作经验</strong>
+                            </div>
+                        </div></div>
+                    <div class="span4">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <div class="know_box clearfix">
+                                    <a class="text-center border_r" style="padding: 0px 20px; float: left;" href="">
+                                        <p class="df_num hoverDefault">0</p><small class="df_chuise1">被预约</small>
+                                    </a>
+                                    <a class="text-center border_r" style="padding: 0px 30px; float: left;" href="">
+                                        <p class="df_num hoverDefault">87</p><small class="df_chuise1">被浏览</small>
+                                    </a>
+                                    <a class="text-center" style="padding: 0px 20px; float: left;" href="">
+                                        <p class="df_num hoverDefault">0</p><small class="df_chuise1">被收藏</small>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="two">
+            <div class="span12">
+                <!-- 开始 -->
+                <div class="df_experience" style="margin-bottom:45px">
+                    <div class="df_Description df_bgcolor_fff df_module" style="height: 177px">
+                        <div>
+                            <div class="row-fluid" style="margin-top: 15px; margin-bottom: 20px;">
+                                <div class="span6">
+                                    <div class="row-fluid">
+                                        <div class="span4 font_small1_14">兼职薪资:</div>
+                                        <div class="span8 fontms_small2_14"><div style="color: rgb(244, 69, 60);"><b style="font-size: 22px;">200</b> 元 / 8小时</div></div>
+                                    </div>
+                                    <div class="row-fluid">
+                                        <div class="span4 font_small1_14">可兼职地点：</div>
+                                        <div class="span8 fontms_small2_14">浙江 湖州市 湖州市吴兴区</div>
+                                    </div>
+                                    <div class="row-fluid">
+                                        <div class="span4 font_small1_14">可兼职时间：</div>
+                                        <div class="span8 fontms_small2_14">工作日下班后,周六,周日</div>
+                                    </div>
+                                </div>
+                                <div class="span6">
+                                    <div class="tb-shop-info tb-shop-info-gold-border">
+                                        <div class="tb-shop-age"></div>
+                                        <div class="tb-shop-info-wrap row-fluid">
+                                            <div class="tb-shop-info-hd span5"style="width: 221.13px;height: 77px;">
+                                                <div class="tb-shop-name">
+                                                    <dl style="margin-top: -1px">
+                                                        <dd>
+                                                            <a title="152902516564" target="_blank">
+                                                                152902516564                      </a>
+
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                                <div class="tb-shop-rank tb-rank-cap tb-shop-icon">
+                                                    <dl>
+                                                        <dt>能力：</dt>
+                                                        <dd>
+                                                            <a href="" target="_blank">
+
+                                                            </a><a class="tb-seller-bail" style="cursor:auto" title="乐鱼0级，能力值：0分">
+                                  <span class="tb-seller-bail-text ">
+                                      乐鱼0级
+                                  </span>
+                                                        </a>
+
+
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+
+                                                <div class="tb-shop-ww">
+                                                    <dl>
+                                                        <dt>联系：</dt>
+                                                        <dd>
+                      <span class="ww-light ww-large">
+<a url="http://www.leyu.net/member/chat.php?touser=t152902516570&amp;mid=8&amp;itemid=194" target="_blank" rel="nofollow"><img class="cc" src="http://www.leyu.net/api/online.png.php?username=t152902516570&amp;mid=8&amp;itemid=194&amp;style=0" title="点击交谈/留言" alt="" align="absmiddle" onerror="this.src=DTPath+'file/image/web-off.gif';"></a></span>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                            <div class="tb-shop-info-bd span7">
+
+                                                承诺保障：
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div></div></div></div>
+                <!-- 结束 -->
+                <!-- 开始 -->
+                <div class="df_experience">
+                    <ul class="nav nav-tabs menu jingcai" id="myTab" style="position: relative; top: 0px; left: 0px;">
+                        <li class="active"><a href="#home">技术经验</a></li>
+                        <li><a href="#profile">评价<em class="J_ReviewsCount">0</em></a></li>
+                        <li><a href="#messages">雇主保障</a></li>
+                        <div class="an_a">
+                            <a class="df_btn df_white df_border_green toknow" onclick="javascript:Go('../xuqiu/talent.php?itemid=194');" href="javascript:void(0)" style="  color: #ee5f5b;border: #ee5f5b 1px solid;">收藏</a>
+                            <a class="df_btn btn-danger yuyuexiao" href="http://www.leyu.net/pay/buy.php?itemid=194&amp;h=5">立即预约</a>
+
+                        </div>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home"style="display: block">
+                            <div class="df_Description df_bgcolor_fff fontms_wryh14 df_module line_break">1、熟悉 Vue 、easyUI、Jquery，Ajax等前端框架<br>2、熟悉.net Mvc 、.NetCore等框架<br>3、熟练使用 SQL Sever、My SQL 数据库、了解数据库相关优化<br>4、 熟悉Winform 开发</div>
+                            <!-- 开始 -->
+                            <div class="y2-0324-div1">
+                                <h4>项目经验</h4>
+                                <div class="cb"></div></div>
+                            <div class="df_experience">
+                                <p class="df_Description df_bgcolor_fff fontms_wryh14 df_module line_break">项目： <br>1、中国基金行政管理网<br>主要负责费用、估值、市场数据等模块
+                                </p></div><!-- 结束 -->
+                        </div>
+                        <div class="tab-pane" id="profile" style="display: none">
+                        </div>
+                        <div class="tab-pane" id="messages">  <div class="df_Description df_bgcolor_fff fontms_wryh14 df_module" style="display: none">
+                            <div class="kg-contract-service-list">
+                                <h6 class="yahei service-title-h6">全程保障交易安全</h6>
+                                <dl class="fuwubao-intro-fl">
+                                    <dd class="first" style="color: #6c6c6c;"><i class="select"></i>验收满意后，再付款给技术兼职</dd>
+                                    <dd style="color: #6c6c6c;"><i class="select"></i>所有技术兼职，均经过严格审查</dd>
+                                    <dd style="color: #6c6c6c;"><i class="select"></i>交易出问题，可获双赔付</dd>
+                                    <dd style="color: #6c6c6c;"><i class="select"></i>承诺不向雇主收取任何费用</dd>
+                                </dl>
+                                <h6 class="yahei service-title-h6">担保交易，平台严格把控交易环节</h6>
+                                <p class="p_line" style="margin-left:-20px;"><img src="http://www.leyu.net/file/yi/images/bao_step.jpg" alt="担保交易，平台严格把控交易环节" style=""></p>
+                            </div>
+                        </div></div>
+                    </div>
+
+                    <script>
+                        $(function(){
+                            $("#works_1").click(function(){
+
+                                $("#works_1").removeClass("active");
+                                $("#works_0").removeClass("active");
+                                $(".y2-0325-div10").removeClass("none");
+                                $(".y2-0325-div11").removeClass("none");
+                                $(".y2-0325-div11").addClass("none");
+                                $("#works_1").addClass("active");
+                            });
+
+                            $('#myTab a').click(function (e) {
+                                e.preventDefault();
+                                $(this).tab('show');
+                            });
+                            $("#works_0").click(function(){
+                                $("#works_1").removeClass("active");
+                                $("#works_0").removeClass("active");
+                                $(".y2-0325-div10").removeClass("none");
+                                $(".y2-0325-div11").removeClass("none");
+                                $(".y2-0325-div10").addClass("none");
+                                $("#works_0").addClass("active");
+                            });
+
+                            $('[data-toggle=popover]').popover({
+                                selector: "",
+                                container: "body" ,
+                                trigger: "hover",
+                                placement: "top",
+                                html : true,
+                                content: function(){return $(this).next().html();}
+
+                            });
+                            var dv=$("ul.menu"),st,divtop=dv.offset().top,divleft=dv.offset().left,divwidth=dv.offset().width;
+
+                            $(window).scroll(function(){
+                                st = $(window).scrollTop();
+                                if (st >= divtop) {
+                                    if (dv.css("position") != "fixed") {
+                                        dv.removeAttr("style");
+                                        dv.css({"position":"fixed","top":"0","left":divleft,"width":divwidth});
+                                    }
+                                }
+                                else if(divtop > st){
+                                    dv.removeAttr("style");
+                                    dv.css({"position":"relative","top":"0","left":"0"});
+                                    //dv.animate({top:0},{duration:200,queue:false});
+                                }
+                            })
+                        });
+                    </script>
+                </div><!-- 结束 -->
+
+                <style type="text/css">
+                    <!--.stat_p { height: 10px;line-height: 10px;background: #FFF7D2;font-size: 1px;}
+                    .stat_p div {height: 10px;line-height: 10px;background: #FFA40D;border-left: #FFA40D 2px solid;float: left;}
+                    .discuss_div{width: 96%; padding-bottom: 8px; margin-top: 30px; border-bottom-color: rgb(229, 229, 229); border-bottom-width: 1px; border-bottom-style: solid;}
+                    .discuss_div .span1 a{width: 50px; height: 50px; display: block;}
+                    .shop-com-tag span{ cursor:pointer;}
+                    --></style>
+
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <ul>
+                <li class="col-xs-12">
+                    <h4>新手指南</h4>
+                    <dd><a href="">注册新用户</a></dd>
+                    <dd><a href="">雇主入门</a></dd>
+                    <dd><a href="">技术兼职入门</a></dd>
+                    <dd><a href="">规则中心</a></dd>
+                </li>
+                <li class="col-xs-12">
+                    <h4>我是雇主</h4>
+                    <dd><a href="">发布招聘需求</a></dd>
+                    <dd><a href="">挑选技术兼职</a></dd>
+                </li>
+                <li class="col-xs-12">
+                    <h4>我是技术兼职</h4>
+                    <dd><a href="">发布简历</a></dd>
+                    <dd><a href="">投递职位</a></dd>
+                </li>
+                <li class="col-xs-12">
+                    <h4>交易保障</h4>
+                    <dd><a href="">乐鱼担保交易</a></dd>
+                    <dd><a href="">雇主保障</a></dd>
+                    <dd><a href="">众包平台</a></dd>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer0">
+        <div class="container">
+            <ul>
+                <li><a href="http://www.leyu.net/about/index.html" target="_blank">关于我们</a></li>
+                <li><a href="http://www.leyu.net/about/183.html" target="_blank">企业文化</a></li>
+                <li><a href="http://www.leyu.net/about/contact.html" target="_blank">联系方式</a></li>
+                <li><a href="http://www.leyu.net/about/8.html" target="_blank">使用协议</a></li>
+                <li><a href="http://www.leyu.net/sitemap/">网站地图</a></li>
+                <li><a href="http://www.leyu.net/link/">友情链接</a></li>
+                <li> <a href="http://www.leyu.net/guestbook/">网站留言</a> </li></ul>
+            <div class="lianjie">
+                <span class="ljbt">友情链接：</span>
+                <a href="http://www.qiangjinsw.com/" target="_blank" title="">格宾网</a>
+                <a href="http://www.fugui.net/" target="_blank" title="">靓号论坛</a>
+                <a href="http://airuibao.net" target="_blank" title="">人工智能</a>
+                <a href="http://www.tiechu.cn/xiangmu/list-htm-catid-37.html" target="_blank" title="">互联网创业项目</a>
+                <a href="http://www.pgzpw.com/" target="_blank" title="">皮革招聘网</a>
+                <a href="http://kunming.sousouqi.com/" target="_blank" title="">昆明企业名录</a>
+                <a href="http://www.188tudi.com/" target="_blank" title="">188土地网</a>
+                <a href="http://www.cnyunjin.cn/" target="_blank" title="">南京云锦</a>
+                <a href="http://www.80bei.com/" target="_blank" title="">网站备案</a>
+                <a href="http://www.szxxt.com/job/" target="_blank" title="">苏州招聘网</a>
+                <a href="http://www.dianshimao.cc/" target="_blank" title="">电视猫</a>
+                <a href="http://www.0319.la/" target="_blank" title="">邢台招聘网</a>
+                <a href="http://www.85menling.com/" target="_blank" title="">可视门铃</a>
+                <a href="http://www.704xiaohua.cn/" target="_blank" title="">兼职换购</a>
+                <a href="http://www.juzici.com/" target="_blank" title="">句子大全</a>
+                <a href="http://www.tiechu.cn" target="_blank" title="">铁杵网</a>
+                <a href="http://www.resumehome.cn/" target="_blank" title="">英文简历模板</a>
+            </div>
+            <div class="end">
+                <p>©2016 乐鱼网 All Rights Reserved 鲁ICP备15008460号</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

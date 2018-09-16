@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>企业管理</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        text-decoration: none;
+        list-style: none;
+        box-sizing: border-box;
+    }
+    html,body{
+        font-size: 14px;
+        line-height: 20px;
+        background-color: rgb(235, 236, 237);
+    }
+    .top{
+        width: 100%;
+        height: 40px;
+        box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+        background-color: white;
+        border: 1px solid white;
+        overflow: visible;
+        z-index: 10;
+        border-radius: 4px;
+        position: relative;
+        margin-bottom: 80px;
+    }
+    .top .console{
+        width: 1200px;
+        height: 40px;
+        margin: 0 auto;
+    }
+    .top .console .home{
+        display: block;
+        width: 100px;
+        height: 40px;
+        padding: 10px 20px;
+        text-align: center;
+        line-height: 20px;
+        font-size: 20px;
+        font-weight: 200;
+        color: #777;
+        float: left;
+    }
+    .top .console .before{
+        height: 40px;
+        margin: 0 9px;
+        border-right: 1px solid #fff;
+        border-left: 1px solid #f2f2f2;
+        float: left;
+    }
+    .top .console .title{
+        width: 84px;
+        height: 40px;
+        float: left;
+        text-align: center;
+        font-size: 14px;
+        padding: 10px 14px;
+        line-height: 20px;
+        font-weight: bold;
+        text-decoration: none;
+        text-shadow: 0 1px 0 #fff;
+    }
+    .top .console .noth{
+        width: 84px;
+        height: 40px;
+        float: left;
+        text-align: center;
+        font-size: 14px;
+        padding: 10px 14px;
+        line-height: 20px;
+        font-weight: bold;
+        text-decoration: none;
+        text-shadow: 0 1px 0 #fff;
+        background-color: #e5e5e5;
+        box-shadow: inset 0 3px 8px rgba(0,0,0,0.125);
+    }
+    .top .console .right li{
+        width: 56px;
+        height: 40px;
+        padding: 10px 14px;
+        font-size: 14px;
+        float: right;
+    }
+    .top .console .right{
+        width: 112px;
+        height: 40px;
+        color: #777;
+        text-decoration: none;
+        text-shadow: 0 1px 0 #fff;
+        float: right;
+    }
+    .top .console .btn{
+        display: none;
+        float: right;
+    }
+    .container{
+        width: 1170px;
+        margin: 0 auto;
+    }
+    h2{
+        font-size: 31.5px;
+        line-height: 40px;
+        margin: 10px 0;
+        font-family: inherit;
+        font-weight: bold;
+        color: inherit;
+        text-rendering: optimizelegibility;
+        text-align: center;
+    }
+    h4{
+        font-size: 17.5px;
+        margin: 10px 0;
+        font-family: inherit;
+        font-weight: bold;
+        line-height: 20px;
+        color: inherit;
+        text-rendering: optimizelegibility;
+    }
+    .span2{
+        width: 66.83px
+    }
+    .span4 {
+        width: 297.26px;
+    }
+    .span8 {
+        width: 65.81196581196582%;
+    }
+    .span9 {
+        width: 74.35897435897436%;
+    }
+    .span10{
+        width: 82.90598290598291%;
+    }
+    .span12{
+        width: 460px;
+    }
+    select {
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        height: 30px;
+        line-height: 30px;
+        padding: 4px 6px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: #555;
+        vertical-align: middle;
+        border-radius: 4px;
+        font-weight: normal;
+        cursor: pointer;
+    }
+    .container .one{
+        width: 100%;
+        overflow: auto;
+        background-color: white;
+        padding: 10px 0;
+        margin-bottom: 41px;
+    }
+    .container .two{
+        width: 100%;
+        overflow: auto;
+        background-color: white;
+        padding: 10px 0;
+        margin-bottom: 41px;
+    }
+    .container .three{
+        width: 100%;
+        overflow: auto;
+        background-color: white;
+        padding: 10px 0;
+        margin-bottom: 41px;
+    }
+    .container .four{
+        width: 100%;
+        overflow: auto;
+        background-color: white;
+        padding: 10px 0;
+        margin-bottom: 21px;
+    }
+    .container .five{
+        width: 100%;
+        overflow: auto;
+        background-color: white;
+        padding: 10px 0;
+        margin-bottom: 95px;
+    }
+    .container .block{
+        width: 14.52991452991453%;
+        display: block;
+        float: left;
+        min-height: 30px;
+        padding: 30px 15px;
+    }
+    .container .saber{
+        padding: 30px 15px;
+        margin-left: 30px;
+        float: right;
+    }
+    .btbt {
+        display: block;
+        float: left;
+        font-weight: bold;
+        text-align: right;
+        margin-top: 5px;
+        padding-right: 10px;
+        min-height: 30px;
+    }
+    .container .saber p{
+        margin-bottom: 20px;
+    }
+    input[type="text"]{
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+        transition: border linear .2s,box-shadow linear .2s;
+        height: 30px;
+        padding: 4px 6px;
+        font-size: 14px;
+        margin-bottom: 10px;
+        line-height: 20px;
+        color: #555;
+        vertical-align: middle;
+        border-radius: 4px;
+    }
+    .radio.inline {
+        display: inline-block;
+        padding-top: 5px;
+        margin-bottom: 0;
+        vertical-align: middle;
+    }
+    input[type="checkbox"] {
+        margin: 4px 0 0;
+        cursor: pointer;
+    }
+    input.p_checkbox {
+         margin-top: -1px;
+         margin-right: 5px;
+     }
+    .span3{
+        width: 142.75px;
+    }
+    hr {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 0;
+        border-top: 1px solid #eee;
+    }
+    textarea {
+        font-family: monospace;
+        border-color: rgb(169, 169, 169);
+        -webkit-appearance: textarea;
+        background-color: white;
+        -webkit-rtl-ordering: logical;
+        flex-direction: column;
+        resize: auto;
+        cursor: text;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        border-width: 1px;
+        border-style: solid;
+        text-rendering: auto;
+        color: initial;
+        letter-spacing: normal;
+        word-spacing: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        display: inline-block;
+        text-align: start;
+        font: 400 13.3333px Arial;
+        -webkit-writing-mode: horizontal-tb;
+    }
+    textarea{
+        padding: 4px 6px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        line-height: 20px;
+        color: #555;
+        border-radius: 4px;
+        height: auto;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+        transition: border linear .2s,box-shadow linear .2s;
+    }
+    .y2-bg3 {
+        background: rgb(254, 254, 242);
+    }
+    .y2-p1 {
+        padding: 53px 21.987px;
+    }
+    .mb50 {
+        margin-bottom: 50px;
+    }
+    .tc {
+        text-align: center;
+    }
+    .y2-0324-div5 a.active {
+        border-bottom-color: rgb(242, 66, 66);
+        border-bottom-width: 3px;
+        border-bottom-style: solid;
+    }
+    .y2-0324-div5 a:visited {
+        width: 19.5%;
+        color: rgb(120, 120, 122);
+        line-height: 45px;
+        text-decoration: none;
+        border-bottom-color: rgb(241, 241, 229);
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        display: inline-block;
+        min-width: 100px;
+    }
+    .y2-0324-div5 a:link {
+        width: 19.5%;
+        color: rgb(120, 120, 122);
+        line-height: 45px;
+        text-decoration: none;
+        border-bottom-color: rgb(241, 241, 229);
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        display: inline-block;
+        min-width: 100px;
+    }
+    .hide {
+        display: none;
+    }
+    .tc {
+        text-align: center;
+    }
+    .y2-0325-ul5 {
+        margin: 0px auto;
+        width: 70%;
+    }
+    .oh {
+        overflow: hidden;
+    }
+    .y2-0325-ul5-li1 {
+        background: rgb(255, 255, 255);
+        height: 360px;
+        color: rgb(205, 205, 205);
+        line-height: 360px;
+        cursor: pointer;
+    }
+    .mt10 {
+        margin-top: 10px;
+    }
+    .Clearfix {
+        display: block;
+    }
+    .f14 {
+        font-size: 14px;
+    }
+    label {
+        margin-bottom: 5px;
+    }
+    .y2-user-label1 {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        display: block;
+    }
+    .y2-label-c1 {
+        color: rgb(176, 175, 170);
+    }
+    .top_list p {
+        min-height: 50px;
+    }
+    p {
+        margin: 0 0 10px;
+    }
+    .btn-success {
+        color: #fff;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        background-color: #5bb75b;
+        background-image: linear-gradient(to bottom,#62c462,#51a351);
+        background-repeat: repeat-x;
+        border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+        padding: 11px 19px;
+        font-size: 17.5px;
+        border-radius: 6px;
+        display: inline-block;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.05);
+        cursor: pointer;
+    }
+    .footer{
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        padding: 50px 0;
+        background-color: rgb(96, 104, 115);
+    }
+    .footer ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .footer h4{
+        color: #dedede;
+        margin-left: 36px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    .footer dd{
+        display: block;
+        margin-bottom: 10px;
+    }
+    .footer .container a{
+        display: block;
+        color: white;
+        font-size: 14px;
+    }
+    .footer0{
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        padding-top: 15px;
+        padding-bottom: 20px;
+        background-color: #fff;
+    }
+    .footer0 ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .footer0 li a {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.5;
+        margin-right: 20px;
+    }
+    .footer0 .ljbt {
+        color: #999;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    .footer0 .lianjie {
+        margin-bottom: 10px;
+    }
+    .footer0 .lianjie a {
+        color: #999;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    .footer0 .end p{
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        color: #999;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+</style>
+<body>
+    <div class="top">
+        <div class="console">
+        <a href="首页.html" class="home">乐鱼网</a>
+        <ul class="li">
+            <li class="before"></li>
+            <li class="noth"><a href="技术兼职.html" style="text-decoration: none;color: #777">技术兼职</a></li>
+            <li class="before"></li>
+            <li class="title"><a href="招聘需求.html" style="text-decoration: none;color: #777">招聘需求</a></li>
+            <li class="before"></li>
+        </ul>
+        <ul class="right">
+            <li><a href="注册.html" style="text-decoration: none;color: #777">注册</a></li>
+            <li><a href="登录.html" style="text-decoration: none;color: #777">登录</a></li>
+        </ul>
+        <a href="" class="btn">导航栏</a>
+    </div>
+    </div>
+    <div class="container">
+        <div class="headen" style="text-align: center;margin-bottom: 80px">
+            <h2><span>欢迎发布技术简历</span></h2>
+            <span style="font-size: 14px;line-height: 20px">发布技术简历，利用业余时间兼职，赚取外快，平多项措施保障技术兼职利益。</span>
+        </div>
+        <h4>兼职信息</h4>
+        <div class="one">
+            <div class="span2 block"></div>
+            <div class="span10 saber">
+                <p>
+                    <span class="span8">
+                        <span class="btbt span3"style="width: 142.75px">
+                            <font color="#ff0000">*
+                            </font>可兼职角色：
+                        </span>
+                        <input name="post[catid]" id="catid_1" type="hidden" value="0">
+                        <span id="load_category_1">
+                            <select onchange="load_category(this.value, 1);" class="span4 select_change" id="industry_type" style="width: 195.63px">
+                                <option value="0">请选择</option>
+                                <option value="384">移动开发</option>
+                                <option value="385">后端开发</option>
+                                <option value="386">前端开发</option>
+                                <option value="387">运维人员</option>
+                                <option value="388">DBA</option>
+                                <option value="389">视觉设计</option>
+                                <option value="390">交互设计</option>
+                                <option value="391">产品经理</option>
+                                <option value="392">运营人员</option>
+                                <option value="393">测试人员</option>
+                                <option value="394">其他</option>
+                                <option value="510">产品设计师</option>
+                                <option value="511">市场/营销</option>
+                                <option value="512">编辑</option>
+                            </select>
+                        </span>
+                        <script type="text/javascript">
+                            var category_moduleid = new Array;
+                                category_moduleid[1]="8";
+                                var category_title = new Array;
+                                category_title[1]='请选择';
+                                var category_extend = new Array;
+                                category_extend[1]='e67eEiqNBAha621eyREGgvUA5x-S-tPUImM5Z3zHnIwMMBgvvFbKw5uOQflKGVoHtUjTj4iRzt6Kl4Dkw8eLxJ9Y75u7GwMN5xSO22k75B';
+                                var category_catid = new Array;category_catid[1]='0';
+                                var category_deep = new Array;category_deep[1]='0';
+                        </script>
+                        <script type="text/javascript" src="http://www.leyu.net/file/script/category.js"></script>
+                    </span>
+                    <span class="span4"></span>
+                </p>
+                <p>
+                    <span class="span8">
+                        <span class="btbt span3"style="width: 142.75px">
+                            <font color="#ff0000">*</font>可兼职区域：
+                        </span>
+                        <input name="post[areaid]" id="areaid_1" type="hidden" value="0">
+                        <span id="load_area_1">
+                            <select onchange="load_area(this.value, 1);" class="select_change span4"style="width: 195.63px">
+                                <option value="0">请选择</option>
+                                <option value="1">北京</option>
+                                <option value="2">上海</option>
+                                <option value="3">天津</option>
+                                <option value="4">重庆</option>
+                                <option value="5">河北</option>
+                                <option value="6">山西</option>
+                                <option value="7">内蒙古</option>
+                                <option value="8">辽宁</option>
+                                <option value="9">吉林</option>
+                                <option value="10">黑龙江</option>
+                                <option value="11">江苏</option>
+                                <option value="12">浙江</option>
+                                <option value="13">安徽</option>
+                                <option value="14">福建</option>
+                                <option value="15">江西</option>
+                                <option value="16">山东</option>
+                                <option value="17">河南</option>
+                                <option value="18">湖北</option>
+                                <option value="19">湖南</option>
+                                <option value="20">广东</option>
+                                <option value="21">广西</option>
+                                <option value="22">海南</option>
+                                <option value="23">四川</option>
+                                <option value="24">贵州</option>
+                                <option value="25">云南</option>
+                                <option value="26">西藏</option>
+                                <option value="27">陕西</option>
+                                <option value="28">甘肃</option>
+                                <option value="29">青海</option>
+                                <option value="30">宁夏</option>
+                                <option value="31">新疆</option>
+                                <option value="32">台湾</option>
+                                <option value="33">香港</option>
+                                <option value="34">澳门</option>
+                            </select>
+                        </span>
+                        <script type="text/javascript">
+                            var area_title = new Array;
+                            area_title[1]='请选择';
+                            var area_extend = new Array;
+                            area_extend[1]='3ed3YezLU1OEnxQucc-P-IDzxR-S-Jn0mxU9YKncqEJHoECV3B1WZ2VLGMzXo0qEDOOlowTAPQvlaHkKdSs';
+                            var area_areaid = new Array;
+                            area_areaid[1]='0';
+                            var area_deep = new Array;
+                            area_deep[1]='0';
+                        </script>
+                        <script type="text/javascript" src="http://www.leyu.net/file/script/area.js"></script>
+                        <br>
+                        <span class="btbt span3" style="margin-left: 0px;width: 142.75px"></span>
+                        <input name="post_fields[jutidizhi]" class="span8 blur_change" id="jutidizhi" style="margin-bottom: 0px;width: 407.13px" type="text" value="" placeholder="具体区域，如“中关村西” “上地” “五道口”">
+                    </span>
+                </p>
+                <p>
+                    <span class="span8">
+                        <span class="btbt span3"style="width: 142.75px;">
+                            <font color="#ff0000">* </font>可兼职时间：
+                        </span>
+                        <span class="span3" style="margin-left: 0px;width: 142.75px;display: inline-block">
+                            <label class="radio inline" style="padding-left: 0px;">
+                                <input class="p_checkbox somesite" type="checkbox" name="post_fields[jianzhishijian][]" value="工作日下班后" id="jianzhishijian_0">
+                                <span class="show_title">工作日下班后</span>
+                            </label>
+                        </span>
+                        <span class="span3" style="width: 142.75px;display: inline-block">
+                            <label class="radio inline">
+                                <input class="p_checkbox somesite" type="checkbox" name="post_fields[jianzhishijian][]" value="周六" id="jianzhishijian_1">
+                                <span class="show_title">周六</span>
+                            </label>
+                        </span>
+                        <span class="span3" style="width: 142.75px;display: inline-block">
+                            <label class="radio inline"><input class="p_checkbox somesite" type="checkbox" name="post_fields[jianzhishijian][]" value="周日" id="jianzhishijian_2">
+                                <span class="show_title">周日</span>
+                            </label>
+                        </span>
+                    </span>
+                </p>
+                <p style="margin-bottom: 0;">
+                    <span class="span8">
+                        <span class="btbt span3">
+                            <font color="#ff0000">* </font>日薪：
+                        </span>
+                        <span class="span9 span10" style="margin-left: 0px;">
+                            <input name="post_fields[rixin]" id="rixin" class="span2 blur_change check_num" type="text" placeholder="元" value=""> /天 (8小时)
+                        </span>
+                        <span class="span12" style="margin-left: 140px;display: block;color: #A0A0A0;font-size: 14px">
+                            <span class="pull-right p_span_font">建议刚开始不要设置较高的价格，等获得好评后再调高价格。<br>推荐先和您现在工作的日薪（税前月薪除以22天）持平。
+                            </span>
+                        </span>
+                    </span>
+                </p>
+                <br>
+            </div>
+        </div>
+        <h4 class="df_title">相关经验</h4>
+        <div class="two">
+            <div class="span2 block"></div>
+            <div class="span10 saber">
+                <p>
+                    <span class="span8">
+                        <span class="btbt span3">
+                            <font color="#ff0000">* </font>公司：
+                        </span>
+                    <span class="span9 span10">
+                        <input name="post_fields[gongsi]" id="gongsi" class="span12 blur_change check_num" type="text" placeholder="曾就职的最知名公司的简称，如‘阿里’" value="">
+                    </span>
+</span>
+                </p>
+                <p>
+                    <span class="span8">
+                        <span class="btbt span3"><font color="#ff0000">* </font>职位：
+                        </span>
+                        <span class="span9 span10">
+                            <input name="post_fields[zhiwei]" id="zhiwei" class="span12 blur_change check_num" type="text" placeholder="如：高级iOS工程师" value="">
+                        </span>
+                    </span>
+                </p>
+                <p style="margin-bottom:60px">
+                    <span class="span8">
+                        <span class="btbt span3"><font color="#ff0000">* </font>工作年限：
+                        </span>
+                        <span class="span9 span10">
+                            <input name="post[experience]" class="span2 blur_change check_num" id="experience" type="text" placeholder="" value="1"> 年
+                        </span>
+                    </span>
+                </p>
+                <hr>
+                <p>
+                    <span class="span8">
+                        <span class="btbt span3" style="vertical-align: top;">
+                            <font color="#ff0000">* </font>技术经验：
+                        </span>
+                        <span class="span9 span10">
+                            <textarea name="post[content]" id="content" class="span12 blur_change" rows="8" onfocus="this.placeholder=''" placeholder="请详细填写您的技术经验和能力情况，展示您的实力，有利于更多公司预约您。"></textarea>
+                            <span class="p_span_font" style="margin-left:142.75px;display: block;color: #A0A0A0;font-size: 14px">示例：<br>
+                                1.高级php，移动、pc、web后端 <br>
+                                2.熟练掌握linux操作系统，能够独立架设开发环境； <br>
+                                3.熟练使用apache,nginx应用服务器，掌握nginx反向代理，负载均衡； <br>
+                                4.了解 memcached 集群处理。 <br>
+                                5.熟练使用 MySQL 数据库，mysql集群，主从读写分离； <br>
+                                6.熟练使用PHP语言及熟练使用常用框架，例如YII,CI开发框架，掌握PHP5面向对象和MVC开发模式； <br>
+                                7.熟练掌握web开发相关技术，如html，javascript，xml，ajax等；
+                            </span>
+                        </span>
+                    </span>
+                </p>
+                <p>
+                    <span class="span8">
+                        <span class="btbt span3" style="vertical-align: top;">项目经验：</span>
+                        <span class="span9 span10">
+                            <textarea name="post_fields[xiangmujingyan]" id="xiangmujingyan" class="span12 blur_change" rows="8" onfocus="this.placeholder=''" placeholder="请详细填写您在工作和业余时间参与过的项目，以及您在项目中所做的具体工作，有利于更多公司预约您。"></textarea>
+                            <span class="p_span_font" style="margin-left:142.75px;display: block;color: #A0A0A0;font-size: 14px">
+                                示例：<br>
+                                工作项目：<br>
+                                1、XXX购物APP <br>
+                                主要负责商品展示、购物流程、付款功能。  <br>
+                                2、XXX商城系统  <br>
+                                主要负责商品发布、商品采购、个人中心。  <br>
+                                3、XXX网站  <br>
+                                主要负责项目重构、版本维护。 <br>
+                                4、XXX画册设计  <br>
+                                有海报，网页平面，品牌设计，LOGO设计，图形设计等
+                            </span>
+                        </span>
+                </p>
+                <p></p>
+            </div>
+        </div>
+        <h4 class="df_title">作品展示</h4>
+        <div class="three">
+            <div class="y2-p1 y2-bg3" id="works_window">
+                <div class="tc y2-0324-div5 mb50" id="g-0330js-div1">
+                    <a class="active" id="works_1" href="javascript:;">上传图片</a>
+                    <a id="works_0" href="javascript:;">在线作品</a>
+                    <span class="hide" id="work_type" data="1"></span></div>
+                <div class="y2-0325-div10 w9802" style="display: block">
+                    <ul class="y2-0325-ul5 oh bc">
+                        <li class="y2-0325-ul5-li1 tc oh" id="upload_img">
+                            <img src="http://www.leyu.net/file/yi/images/shangchuan.jpg" id="showthumb" title="上传图片" alt="" onclick="Dalbum('',8,450,450, Dd('thumb').value, true);">
+                            <input name="post_fields[zuopintupian]" type="hidden" id="thumb" value="">
+                        </li>
+                        <li class="mt10" style="width:450px;margin-left:170px">
+                            <label class="Clearfix f14">
+                                <span class="y2-user-label1 y2-label-c1 work_brief_img">作品描述</span>
+                                <input type="text" name="post_fields[tupianmiaoshu]" id="tupianmiaoshu" class="span12 blur_change check_num" maxlength="30" style="height:30px;" placeholder="请在30个字以内对您的作品简单描述。" value="">
+                            </label></li></ul></div>
+                <div class="y2-0325-div11 none w9802" style="display: none">
+                    <ul class="y2-0325-ul5 oh bc">
+                        <li class="mt10" style="width:450px;margin-left:170px">
+                            <label class="Clearfix f14">
+                                <span class="y2-user-label1 y2-label-c1">作品链接</span>
+                                <input class="span12 blur_change check_num" style="height:30px;" type="text" name="post_fields[zaixianzuopin]" id="zaixianzuopin" value="">
+                            </label></li>
+
+                        <li class="mt10" style="width:450px;margin-left:170px">
+                            <label class="Clearfix f14">
+                                <span class="y2-user-label1 y2-label-c1">作品描述</span>
+                                <input type="text" name="post_fields[zuopinmiaoshu]" id="zuopinmiaoshu" class="span12 blur_change check_num" maxlength="30" style="height:30px;" placeholder="请在30个字以内对您的作品简单描述。" value="">
+                            </label></li></ul></div>
+            </div>
+        </div>
+        <hr>
+        <h4 class="df_title">私密信息</h4>
+        <div class="four">
+            <div class="span2 new-clo1"style="width: 170px;height: 60px;display: inline-block"></div>
+            <div class="span10 top_list new-clo1 saber">
+                <p>
+                    <span class="span8">
+                        <span class="btbt span3"><font color="#ff0000">* </font>真实姓名：</span>
+                        <span class="span9">
+                            <input name="post[truename]" class="blur_change" id="truename" style="margin-bottom: 0px;" type="text" maxlength="12" value="">&nbsp;&nbsp;
+                        </span>
+                    </span>
+                </p>
+                <p>
+                    <span class="span8">
+                        <span class="btbt span3"><font color="#ff0000">* </font>联系电话：</span>
+                        <input type="hidden" name="gai" id="gai" value="0">
+                        <span id="dianhua" class="span9 mtop5" style="margin-top: 5px;display: inline-block">
+                            <span id="dianhua0"style="margin-top: 5px">15536882019  </span>
+                        </span>
+                    </span>
+                </p>
+                <p>
+                    <span class="span8"><span class="btbt span3"><font color="#ff0000">* </font>公开程度：</span>
+                        <span id="dianhua" class="span9 mtop5" style="margin-top: 5px;display: inline-block">
+                            <input type="radio" class="p_checkbox" name="post[open]" value="3" checked=""> 开放&nbsp;&nbsp;
+                            <input type="radio" class="p_checkbox" name="post[open]" value="2"> 仅网站可见&nbsp;&nbsp;
+                            <input type="radio" class="p_checkbox" name="post[open]" value="1"> 关闭&nbsp;&nbsp;
+                        </span>
+                    </span>
+            </div>
+        </div>
+        <br>
+        <div class="five">
+            <div class="span12" style="text-align: center;width: 100%">
+                <input class="btn btn-success btn-large" id="sub_project" type="submit" name="submit" value="发布">
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <ul>
+                <li class="col-xs-12">
+                    <h4>新手指南</h4>
+                    <dd><a href="">注册新用户</a></dd>
+                    <dd><a href="">雇主入门</a></dd>
+                    <dd><a href="">技术兼职入门</a></dd>
+                    <dd><a href="">规则中心</a></dd>
+                </li>
+                <li class="col-xs-12">
+                    <h4>我是雇主</h4>
+                    <dd><a href="">发布招聘需求</a></dd>
+                    <dd><a href="">挑选技术兼职</a></dd>
+                </li>
+                <li class="col-xs-12">
+                    <h4>我是技术兼职</h4>
+                    <dd><a href="">发布简历</a></dd>
+                    <dd><a href="">投递职位</a></dd>
+                </li>
+                <li class="col-xs-12">
+                    <h4>交易保障</h4>
+                    <dd><a href="">乐鱼担保交易</a></dd>
+                    <dd><a href="">雇主保障</a></dd>
+                    <dd><a href="">众包平台</a></dd>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer0">
+        <div class="container">
+            <ul>
+                <li><a href="http://www.leyu.net/about/index.html" target="_blank">关于我们</a></li>
+                <li><a href="http://www.leyu.net/about/183.html" target="_blank">企业文化</a></li>
+                <li><a href="http://www.leyu.net/about/contact.html" target="_blank">联系方式</a></li>
+                <li><a href="http://www.leyu.net/about/8.html" target="_blank">使用协议</a></li>
+                <li><a href="http://www.leyu.net/sitemap/">网站地图</a></li>
+                <li><a href="http://www.leyu.net/link/">友情链接</a></li>
+                <li> <a href="http://www.leyu.net/guestbook/">网站留言</a> </li></ul>
+            <div class="lianjie">
+                <span class="ljbt">友情链接：</span>
+                <a href="http://www.qiangjinsw.com/" target="_blank" title="">格宾网</a>
+                <a href="http://www.fugui.net/" target="_blank" title="">靓号论坛</a>
+                <a href="http://airuibao.net" target="_blank" title="">人工智能</a>
+                <a href="http://www.tiechu.cn/xiangmu/list-htm-catid-37.html" target="_blank" title="">互联网创业项目</a>
+                <a href="http://www.pgzpw.com/" target="_blank" title="">皮革招聘网</a>
+                <a href="http://kunming.sousouqi.com/" target="_blank" title="">昆明企业名录</a>
+                <a href="http://www.188tudi.com/" target="_blank" title="">188土地网</a>
+                <a href="http://www.cnyunjin.cn/" target="_blank" title="">南京云锦</a>
+                <a href="http://www.80bei.com/" target="_blank" title="">网站备案</a>
+                <a href="http://www.szxxt.com/job/" target="_blank" title="">苏州招聘网</a>
+                <a href="http://www.dianshimao.cc/" target="_blank" title="">电视猫</a>
+                <a href="http://www.0319.la/" target="_blank" title="">邢台招聘网</a>
+                <a href="http://www.85menling.com/" target="_blank" title="">可视门铃</a>
+                <a href="http://www.704xiaohua.cn/" target="_blank" title="">兼职换购</a>
+                <a href="http://www.juzici.com/" target="_blank" title="">句子大全</a>
+                <a href="http://www.tiechu.cn" target="_blank" title="">铁杵网</a>
+                <a href="http://www.resumehome.cn/" target="_blank" title="">英文简历模板</a>
+            </div>
+            <div class="end">
+                <p>©2016 乐鱼网 All Rights Reserved 鲁ICP备15008460号</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    let fu=document.querySelectorAll("#g-0330js-div1 a");
+    let son=document.querySelectorAll(".w9802");
+    for (let i=0;i<fu.length;i++){
+        fu[i].onclick=function () {
+            for (let j=0;j<son.length;j++){
+                son[j].style.display="none";
+            }
+            son[i].style.display="block";
+        }
+    }
+</script>

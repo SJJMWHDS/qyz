@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<style>
+    html,body{
+        width: 100%;
+        height: 100%;
+        background-color: rgb(235, 236, 237);
+    }
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        list-style: none;
+        border: none;
+    }
+    .box{
+        width: 340px;
+        padding-top: 86px !important;
+        margin: 0 auto;
+    }
+    .row{
+        background-color: #ffffff;
+        padding: 20px;
+        border-top: 1px solid #d8dee2;
+        border-radius: 5px;
+    }
+    .top{
+        padding-top: 36px !important;
+        padding-bottom: 26px !important;
+    }
+    .top h1{
+        display:inline-block;
+        font-size: 20px;
+        border-left: 1px solid #ddd;
+        padding-left: 10px;
+        margin-left: 8px;
+        margin: 10px 0;
+        font-weight: bold;
+        color: inherit;
+        line-height: 40px;
+    }
+    .container .change{
+        margin-bottom: 20px;
+        list-style: none;
+        border-bottom: 1px solid #f35554;
+        padding: 0;
+        margin: 0 0 20px 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .container .change li{
+        width: 50%;
+        text-align: center;
+        margin-bottom: -1px;
+        line-height: 20px;
+    }
+    .container .change li a{
+        display: block;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        line-height: 20px;
+        border-radius: 4px 4px 0 0;
+        color: #08c;
+    }
+    .change .active a{
+        color: #fff;
+        cursor: default;
+        background-color: #f35554;
+        border: 1px solid #f35554;
+        border-bottom-color: transparent;
+    }
+    .container .content{
+        overflow: auto;
+        font-size: 14px;
+    }
+    .container .content .group{
+        margin-bottom: 10px;
+    }
+    input{
+        width: 300px;
+        display: inline-block;
+        height: 30px;
+        padding: 4px 6px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        line-height: 20px;
+        color: #555;
+        vertical-align: middle;
+        border-radius: 4px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+        transition: border linear .2s,box-shadow linear .2s;
+    }
+    .jizhu {
+        padding-left: 10px;
+        min-height: 20px;
+    }
+    input[type="checkbox"] {
+        margin-left: 0px;
+        float: left;
+        margin: 4px 0 0;
+        width: auto;
+    }
+    .pull-right {
+        float: right;
+    }
+    .btn-success {
+        color: #fff;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        background-color: #5bb75b;
+        margin-top: 10px;
+        background-image: linear-gradient(to bottom,#62c462,#51a351);
+        display: block;
+        width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+        padding: 11px 19px;
+        font-size: 17.5px;
+        border-radius: 6px;
+        margin-bottom: 0;
+        line-height: 20px;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+    input[type="text"]{
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+        display: inline-block;
+        height: 30px;
+        padding: 4px 6px;
+        font-size: 14px;
+        line-height: 20px;
+        color: #555;
+        vertical-align: middle;
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+    .btn-danger {
+        color: #fff;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+        background-color: #da4f49;
+        background-image: linear-gradient(to bottom,#ee5f5b,#bd362f);
+        background-repeat: repeat-x;
+    }
+    .radio.inline{
+        display: inline-block;
+        padding-top: 5px;
+        margin-bottom: 0;
+        vertical-align: middle;
+    }
+    .radio{
+        padding-left: 20px;
+    }
+    label{
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 20px;
+    }
+</style>
+<body>
+<div class="box">
+    <div class="row">
+        <div class="top">
+            <a href="首页.html" style="float: left">
+                <img src="http://www.leyu.net/skin/yi/image/logo.png" alt="">
+            </a>
+            <h1>新用户注册</h1>
+        </div>
+        <div class="container">
+            <ul class="change">
+                <li class="active">
+                    <a href=""class="name" style="color: white">手机注册</a>
+                </li>
+            </ul>
+            <div class="content">
+                <div class="tab name"style="display: block;">
+                    <div class="group">
+                        <input name="username" type="text" id="username" placeholder="手机号" onfocus="$('#dusername0').hide();">
+                    </div>
+                    <div class="group">
+                        <input name="password" type="password" id="password" placeholder="密码" onfocus="$('#dpassword').hide();">
+                    </div>
+                    <div class="group">
+                        <label class="control-label" style="float: left; padding-top: 5px;padding-right: 5px;">注册倾向：</label>
+                        <label class="radio inline"><input type="radio" name="qingxiang" id="radio" value="0" onclick="$('#dqingxiang').hide();"style="width: 12.8px;height: 12.8px;margin-top: 4px;margin-left: -20px;margin-right: 5px">我来赚钱</label>
+                        <label class="radio inline pull-right"><input type="radio" name="qingxiang" id="radio" value="1" onclick="$('#dqingxiang').hide();"style="width: 12.8px;height: 12.8px;margin-top: 4px;margin-right: 5px">找人办事</label>
+                        <a href="javascript:void(0)" title="《乐鱼网服务协议》" class="pull-right" data-toggle="modal" data-target="#xieyi"style="font-size: 14px;color: #08c;">《乐鱼网服务协议》</a>
+                        <a href="登录.html">
+                            <button type="submit" name="submit" class="btn btn-large btn-block btn-success dengru" style="margin-bottom: 40px">同意协议并注册</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #ddd;font-size: 14px">
+                <br>
+                第三方登录：<a href="http://www.leyu.net/api/oauth/qq/connect.php" title="QQ登录"><img src="http://www.leyu.net/api/oauth/qq/ico.png" alt="QQ登录"></a>&nbsp;
+                <a href="http://www.leyu.net/api/oauth/sina/connect.php" title="新浪微博"><img src="http://www.leyu.net/api/oauth/sina/ico.png" alt="新浪微博"></a>
+                <span class="pull-right"style="font-size: 14px">已有账号？<a href="登录.html" title="登录账号"style="color: #08c;">登录</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
